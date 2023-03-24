@@ -1,0 +1,86 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>API Count</title>
+</head>
+<body>
+  <h1>API Count</h1>
+  <button id="download-csv-button">Download CSV</button>
+  <button id="download-json-button">Download JSON</button>
+  <script src="export_files.js"></script>
+</body>
+</html> -->
+
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////// -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>API Count</title>
+  <script>
+    function generateNonce() {
+      let nonce = Math.random().toString(36).substring(2);
+      console.log(nonce);
+      return nonce;
+    }
+  </script>
+  <!-- <script nonce=${nonce}></script> -->
+</head>
+
+<body>
+  <h1>API Count</h1>
+  <button id="download-csv-button">Download CSV</button>
+  <button id="download-json-button">Download JSON</button>
+
+  <script nonce=${generateNonce()}> /// previously it was <script nonce=generateNonce()/// nonce=${generateNonce()}>
+    function exportToJsonFile(jsonData) {
+      const entries = window.gEntries;/////remove if required
+      let dataStr = JSON.stringify(jsonData);
+      let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+
+      let exportFileName = 'Count of the APIs.json';
+
+      let linkElement = document.createElement('a');
+
+      linkElement.setAttribute('href', dataUri);
+      linkElement.setAttribute('download', exportFileName);
+      linkElement.click();
+    }
+
+    function download_csv_file(csv_data) {
+      const entries = window.gEntries;
+      const linkElement = document.createElement('link');
+      var csv = 'API,Count\r\n';
+
+      for (var i = 0; i < csv_data.length; i++) {
+        csv += csv_data[i][0] + ',' + csv_data[i][1] + '\n';
+      }
+
+      var hiddenElement = document.createElement('a');
+      console.log(hiddenElement);
+      if (hiddenElement) {
+        hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+        if (document.body) {
+          document.body.appendChild(hiddenElement);
+          hiddenElement.target = '_blank';
+          hiddenElement.download = 'Count of the APIs.csv';
+          hiddenElement.click();
+        } else {
+          console.log('document.body is not defined');
+        }
+      } else {
+        console.log('hiddenElement is not defined');
+      }
+    }
+
+    document.getElementById('download-csv-button').addEventListener('click', download_csv_file);
+    document.getElementById('download-json-button').addEventListener('click', exportToJsonFile);
+  </script>
+</body>
+
+<!-- </html> -->
+<!-- "content_security_policy": "script-src 'self' 'unsafe-inline'; object-src 'self'", -->
+<!-- "content_security_policy": "script-src 'self' 'nonce-${nonce}'; object-src 'self'", -->
+<!-- "content_security_policy": "script-src 'self' 'unsafe-inline'; object-src 'self'", -->
+<!-- "extension_pages": "default-src 'self'" default code that does not allow scripts-->

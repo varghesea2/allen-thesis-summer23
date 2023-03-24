@@ -1,0 +1,6 @@
+API, test_status, old/new
+window.eval, success, old 
+search, failed, new
+navigator.platform, success, new
+window.setInterval, success, old
+navigator.userAgent, success, old

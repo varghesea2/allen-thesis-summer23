@@ -1,0 +1,1 @@
+- The Power of Obfuscation Techniques in Malicious JavaScript Code: A Measurement Study: Investigated Obfuscated techniques used in the wild and the effectiveness of AVs on the obfuscated JS malware 

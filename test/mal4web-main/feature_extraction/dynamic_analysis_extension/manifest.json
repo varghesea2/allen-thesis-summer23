@@ -1,0 +1,58 @@
+{
+    "manifest_version":2,
+    "name":"Malicious Web Detection",
+    "version":"0.1",
+    "icons":{
+        "16":"iconr.png"
+    },
+    "background": {
+        "scripts": ["background.js"]
+   },
+   "content_scripts": [
+     {
+       "matches":["<all_urls>"],
+       "permissions": [
+         "tabs",
+         "activeTab",
+         "storage",
+         "webNavigation",
+         "unlimitedStorage",
+         "notifications",
+         "clipboardWrite",
+         "downloads",
+         "tabCapture",
+         "cookies",
+         "browsingData",
+         "webRequest",
+         "*://*/*",
+         "gcm",
+         "contextMenus",
+         "management"],
+       "js": ["DynamicFeatureExctractor.js"],
+       "run_at":"document_start"
+
+     }
+ ],
+ "permissions": [
+         "tabs",
+         "activeTab",
+         "storage",
+         "webNavigation",
+         "unlimitedStorage",
+         "notifications",
+         "clipboardWrite",
+         "downloads",
+         "tabCapture",
+         "cookies",
+         "browsingData",
+         "webRequest",
+         "webRequestBlocking",
+         "*://*/*",
+         "gcm",
+         "contextMenus",
+         "management"],
+
+ "web_accessible_resources": [
+   "DynamicFeatureExctractor.js"
+ ]
+}

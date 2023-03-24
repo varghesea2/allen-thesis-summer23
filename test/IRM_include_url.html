@@ -1,0 +1,320 @@
+<html>
+
+<head>
+
+    <script>
+        "use strict";
+        const linkElement = document.createElement('link');
+        const CountOfApis = {};
+        const groupedData = {};
+        const entries = [];
+        const csv = '';
+
+        // Declare Variables
+        var old_alert;
+        var old_ElementById;
+        var old_TagName;
+        var old_eval;
+        var old_log;
+        var old_random;
+        var old_ClassName;
+        var old_WindowOpen;
+        var old_writeln;
+        var old_document_open;
+        var old_TimeOut;
+        var old_SetInterval;
+        var old_EventListener;
+        var old_createElement;
+        var old_captureEvents;
+        var old_elementFromPoint;
+        var old_getRootNode;
+        var old_getSelection;
+        var old_hasChildNodes;
+        var old_hasOwnProperty;
+        var old_isDefaultNamespace;
+        var old_isEqualNode;
+        var old_isSameNode;
+        var old_isPrototypeOf;
+        var old_lookupNamespaceURI;
+        var old_lookupPrefix;
+        var old_normalize;
+        var old_queryCommandEnabled;
+        var old_queryCommandState;
+        var old_removeEventListener;
+        var old_releaseEvents;
+        var old_toLocaleString;
+        var old_valueOf;
+        var old_cloneNode;
+        var old_contains;
+        var old_search;
+        var old_split;
+        var old_charAt;
+        var old_log;
+        var old_random;
+        var old_charCodeAt;
+        var old_fromcharCodeAt;
+        var old_concat;
+        var old_indexof;
+        var old_substring;
+        var old_replace;
+        var old_write;
+        var old_escape;
+        var old_unescape;
+        var old_parseInt;
+
+
+
+
+        // function addtoCount(csv, entries, api, CountOfApis) {
+        //     const currentUrl = window.location.href;
+
+        //     if (CountOfApis[currentUrl] == undefined) {
+        //         // If the current URL is not in the CountOfApis object, add it as a new key with a value of 1
+        //         CountOfApis[currentUrl] = {};
+        //     }
+        //     if (CountOfApis[currentUrl][api] == undefined) {
+        //         // If the API is not in the object for the current URL, add it as a new key with a value of 1
+        //         CountOfApis[currentUrl][api] = 1;
+        //     } else {
+        //         // If the API is already in the object for the current URL, increment its value by 1
+        //         CountOfApis[currentUrl][api]++;
+        //     }
+
+        //     // Push the current URL and the count of API calls for the current URL and API to the entries array
+        //     entries.push([currentUrl, api, CountOfApis[currentUrl][api]]);
+
+        //     // Group the data by API
+        //     const groupedData = {};
+        //     entries.forEach((entry) => {
+        //         const api = entry[1];
+        //         const url = entry[0];
+        //         const count = entry[2];
+
+        //         if (groupedData[api] == undefined) {
+        //             groupedData[api] = [];
+        //         }
+
+        //         groupedData[api].push({ url: url, count: count });
+        //     });
+
+        //     //console.log(groupedData);
+
+        //     // Update the csv string with the current URL, API, and count
+        //     csv += currentUrl + ',' + api + ',' + CountOfApis[currentUrl][api] + '\n';
+        //     console.log(groupedData);
+        //     console.log(CountOfApis);
+        //     return entries;
+        // }
+        ////////////////////////////
+        function addtoCount(csv, entries, api, CountOfApis) {
+            const currentUrl = window.location.href;
+
+            if (CountOfApis[currentUrl] == undefined) {
+                // If the current URL is not in the CountOfApis object, add it as a new key with a value of 1
+                CountOfApis[currentUrl] = {};
+            }
+            if (CountOfApis[currentUrl][api] == undefined) {
+                // If the API is not in the object for the current URL, add it as a new key with a value of 1
+                CountOfApis[currentUrl][api] = 1;
+            } else {
+                // If the API is already in the object for the current URL, increment its value by 1
+                CountOfApis[currentUrl][api]++;
+            }
+
+            // Push the current URL and the count of API calls for the current URL and API to the entries array
+            entries.push([currentUrl, api, CountOfApis[currentUrl][api]]);
+
+            // Group the data by API
+            const groupedData = {};
+            entries.forEach((entry) => {
+                const api = entry[1];
+                const url = entry[0];
+                const count = entry[2];
+
+                if (groupedData[api] == undefined) {
+                    groupedData[api] = {};
+                }
+
+                if (groupedData[api][url] == undefined) {
+                    groupedData[api][url] = count;
+                } else {
+                    groupedData[api][url] += count;
+                }
+            });
+
+            console.log(groupedData);
+            console.log(CountOfApis);
+            return entries;
+        }
+
+        // old_eval = window.eval;
+        // window.eval = function () {
+        //     console.log(" window.eval is being monitored");
+        //     const obj = this;
+        //     const args = arguments;
+        //     old_eval.apply(obj, args);
+        //     addtoCount(csv, entries, 'window.eval', CountOfApis);
+        // }
+
+
+
+
+        // old_createElement = document.createElement;
+        // document.createElement = function () {
+        //     const obj = this;
+        //     const args = arguments;
+
+        //     // Using the captureStackTrace function to get a stack trace
+        //     const stackTrace = (new Error()).stack;
+        //     if (stackTrace.includes("linkElement.setAttribute")) {
+        //         console.log("createElement is being monitored from linkElement.setAttribute");
+        //         addtoCount(csv, entries, "createElement", CountOfApis);
+        //     } else {
+        //         console.log("createElement is being monitored");
+        //         addtoCount(csv, entries, "createElement", CountOfApis);
+        //     }
+
+        //     return old_createElement.apply(obj, args);
+        // }
+
+
+        old_split = String.prototype.split;
+        String.prototype.split = function () {
+            console.log("String.prototype.split is being monitored");
+            const obj = this;
+            const args = arguments;
+            old_split.apply(obj, args);
+            addtoCount(csv, entries, "String.prototype.split", CountOfApis);
+
+        }
+
+
+
+        old_random = Math.random;
+        Math.random = function () {
+            console.log("Math.random is being monitored");
+            const obj = this;
+            const args = arguments;
+            old_random.apply(obj, args);
+            addtoCount(csv, entries, "Math.random", CountOfApis);
+
+        }
+
+
+        old_fromcharCodeAt = String.fromCharCode;
+        String.fromCharCode = function () {
+            console.log("String.fromCharCode is being monitored");
+            const obj = this;
+            const args = arguments;
+            old_fromcharCodeAt.apply(obj, args);
+            addtoCount(csv, entries, "String.fromCharCode", CountOfApis);
+
+        }
+    </script>
+
+
+    <form>
+        <input type="button" value="Write to CSV File" onclick=downloadCSVFile(entries)>
+        <input type="button" value="Write JSON File" onclick="downloadJSONFile(entries)">
+
+    </form>
+
+    <script type="text/javascript"
+        src="/Users/allenvarghese/Desktop/JavaScript/HZrunHRjvTX5MIeL6Ibl7iJKqMmAAzHWmbkaKM7M3x0.js"></script>
+</head>
+
+<body>
+    <script>
+        /////////////////////////////////////////////////////////////////////////////////////URL FIRST and then columns and values /////////////////////////////////////////
+
+        function downloadCSVFile(entries) {
+            // Group the data by URL
+            const groupedData = {};
+            for (let i = 0; i < entries.length; i++) {
+                const api = entries[i][1];
+                const url = entries[i][0];
+                const count = entries[i][2];
+
+                if (groupedData[url] == undefined) {
+                    groupedData[url] = {};
+                }
+
+                groupedData[url][api] = count;
+            }
+
+            // Create a CSV with a header row
+            let csv = 'URL';
+            const apis = new Set();
+            for (const url in groupedData) {
+                for (const api in groupedData[url]) {
+                    apis.add(api);
+                }
+            }
+            for (const api of apis) {
+                csv += `,${api}`;
+            }
+            csv += '\n';
+
+            // Add a row for each entry in the groupedData object
+            for (const url in groupedData) {
+                csv += `${url}`;
+                for (const api of apis) {
+                    csv += `,${groupedData[url][api] || ''}`;
+                }
+                csv += '\n';
+            }
+
+            // Create a hidden link element
+            const hiddenElement = document.createElement('a');
+
+            // Set the link's href to the CSV string and add a filename
+            hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+            hiddenElement.download = 'Count of the APIs.csv';
+
+            // Append the link to the document and click it
+            document.body.appendChild(hiddenElement);
+            hiddenElement.click();
+
+            // Remove the link from the document
+            document.body.removeChild(hiddenElement);
+        }
+
+
+        ///////////////////////////////////////////////////////////////////////////URL FIRST and then columns and values /////////////////////////////////////////
+
+        function downloadJSONFile(entries) {
+            // Group the data by URL
+            const groupedData = {};
+            for (let i = 0; i < entries.length; i++) {
+                const api = entries[i][1];
+                const url = entries[i][0];
+                const count = entries[i][2];
+
+                if (groupedData[url] == undefined) {
+                    groupedData[url] = {};
+                }
+
+                groupedData[url][api] = count;
+            }
+
+            // Convert the groupedData object to a JSON string
+            const json = JSON.stringify(groupedData);
+
+            // Create a hidden link element
+            const hiddenElement = document.createElement('a');
+
+            // Set the link's href to the JSON string and add a filename
+            hiddenElement.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(json);
+            hiddenElement.download = 'Count of the APIs.json';
+
+            // Append the link to the document and click it
+            document.body.appendChild(hiddenElement);
+            hiddenElement.click();
+
+            // Remove the link from the document
+            document.body.removeChild(hiddenElement);
+        }
+    </script>
+</body>
+
+</html>

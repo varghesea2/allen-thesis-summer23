@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "My Extension",
+  "version": "1.0",
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "js": [
+        "background.js",
+        "inject.js"
+      ],
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "API COUNT"
+  },
+  "permissions": [
+    "scripting",
+    "tabs",
+    "storage",
+    "unlimitedStorage",
+    "webNavigation"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "background.js",
+        "inject.js",
+        "popup.html"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}
