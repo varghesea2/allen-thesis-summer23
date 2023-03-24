@@ -2,7 +2,7 @@
 
 ## Repository
 
-https://github.com/isseclab-udayton/allen-thesis-s23 
+https://github.com/isseclab-udayton/allen-thesis-summer23 
 
 ## Overleaf link
 
