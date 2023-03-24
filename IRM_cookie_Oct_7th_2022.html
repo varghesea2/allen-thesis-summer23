@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+
+<head>
+    <script>
+        function setCookie(cookiename, cookievalue, numdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (numdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            this.hhh = document.cookie = cookiename + "=" + cookievalue + ";" + expires + ";path=/";
+            console.log(this.hhh);
+            return
+        }
+/*
+        function newcookie(name, value, days) {
+            const d = new Date();
+            d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+            this.EXPIRES = d.toUTCString();
+            expires = "expires=" + d.toUTCString();
+            this.COOKIENAME = name;
+            this.COOKIEVALUE = value;
+            this.DETAILEDNAME = document.cookie = name + "=" + value + ";" + expires + ";path=/";
+            let ttt = document.cookie = name + "=" + value + ";" + expires + ";path=/";
+            this.IFCONDITION = function () {
+                if (this.COOKIENAME !== null) {
+                    console.log("Cookie name has been set  and the name is " + this.COOKIENAME);
+                }
+            }
+        }
+                var desc = Object.getOwnPropertyDescriptor(Document.prototype,
+                    "cookie");
+                //assert the desc object and its prototype chain
+                Object.defineProperty(document, "cookie", {
+                    get: function () {
+                        var code_origin = getCodeOrigin(new Error().stack);
+                        if (originAllowed(code_origin, "cookie")) {
+                            setOriginSourceRead(code_origin, "cookie");
+                            return desc.get.call(document);
+                        }
+                        return;
+                    },
+                    set: function (val){desc.set.call(document,val);},
+                    enumerable: false,
+                    configurable: false
+                });*/
+    </script>
+</head>
+
+</html>
+<!--let hhh = 
+    bakgroung : about what you are doing (readme log)
+    how Monitoring  APIs
+    how enforce policy

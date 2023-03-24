@@ -1,0 +1,23 @@
+<html>
+
+<head>
+    <script>
+        var q = 0;
+        var a = 0;
+   new_alert=window.alert;
+
+    window.alert=
+    function (){
+        if (q <=a){
+            new_alert(arguments[0]);
+            console.log("alert is executed normally"); 
+            q++;
+            return; 
+            }
+        else
+        {
+           console.log("alert is disallowed due to policy violation"); 
+        }
+        
+    }
+</script>

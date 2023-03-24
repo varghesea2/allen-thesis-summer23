@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "csv": "^6.2.6",
+    "csv-parser": "^3.0.0",
+    "downloadjs": "^1.4.7",
+    "puppeteer": "^19.6.3"
+  }
+}
