@@ -82,8 +82,8 @@ const runScriptOnWebsites = async (filePath) => {
           csvResult += row + '\n';
         }
         
-        fs.writeFileSync('mal_entries_log_mal1.csv', csvResult);
-        fs.writeFileSync('mal_no_entries_mal1.csv', noEntriesWebsites.join('\n'));
+        fs.writeFileSync('mal_entries_log_mal2.csv', csvResult);
+        fs.writeFileSync('mal_no_entries_mal2.csv', noEntriesWebsites.join('\n'));
         console.log(`Websites without entries: ${noEntriesWebsites.join(', ')}`);
       } catch (error) {
         console.error(`Error visiting ${website}: ${error.message}`);
