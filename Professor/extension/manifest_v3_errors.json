@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "My Extension",
+  "version": "1.0",
+  "id": "kakambckbagpklgpgipcmmlcdabjjcpk",
+  "description": "counts the call of API's.",
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "js": [
+        "background.js",
+        "inject.js"
+      ],
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_title": "API COUNT"
+  },
+  "permissions": [
+    "tabs",
+    "storage",
+    "unlimitedStorage",
+    "webNavigation",
+    "<all_urls>"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "background.js",
+        "inject.js",
+        "popup.html"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}
